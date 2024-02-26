@@ -328,7 +328,7 @@ fn create_jitsi_jwt(
   secret: String,
   group: String,
 ) -> anyhow::Result<String> {
-  let iat = OffsetDateTime::now_utc();
+  let iat = OffsetDateTime::now_utc() - Duration::seconds(10);
   let exp = iat + Duration::days(1);
 
   let context = JitsiContext {
